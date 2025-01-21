@@ -1,6 +1,7 @@
+import 'package:aspen/featuers/on_borading/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:aspen/core/utils/app_images.dart';
-//import 'package:get/get.dart' as g;
+import 'package:get/get.dart' as g;
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -51,10 +52,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
     _animationController.forward();
 
     Future.delayed(const Duration(milliseconds: 3500), () {
-      // Navigate to the HomeView after the splash screen
-      // g.Get.off(() => const HomeView(),
-      //     transition: g.Transition.fade,
-      //     duration: const Duration(milliseconds: 1400));
+      g.Get.off(() => const OnBoardingView(),
+          transition: g.Transition.leftToRightWithFade,
+          duration: const Duration(milliseconds: 1400));
     });
   }
 
