@@ -2,6 +2,7 @@ import 'package:aspen/featuers/home/presentation/views/widgets/custom_app_bar.da
 import 'package:aspen/featuers/home/presentation/views/widgets/custom_header_of_section.dart';
 import 'package:aspen/featuers/home/presentation/views/widgets/list_view_of_category_items.dart';
 import 'package:aspen/featuers/home/presentation/views/widgets/list_view_of_popular_places.dart';
+import 'package:aspen/featuers/home/presentation/views/widgets/list_view_of_recommended_places.dart';
 import 'package:aspen/featuers/home/presentation/views/widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -72,23 +73,10 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
 
-        // Recommended Container
-        const SliverPadding(
-          padding: EdgeInsets.only(top: 10),
-          sliver: SliverToBoxAdapter(
-            child: ContainerOfRecommended(),
-          ),
+        const SliverToBoxAdapter(
+          child: ListViewOfRecommendedPlaces(),
         ),
       ],
     );
-  }
-}
-
-class ContainerOfRecommended extends StatelessWidget {
-  const ContainerOfRecommended({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
