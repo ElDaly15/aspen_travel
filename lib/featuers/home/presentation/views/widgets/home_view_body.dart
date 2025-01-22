@@ -24,6 +24,9 @@ class HomeViewBody extends StatelessWidget {
             child: CustomAppBar(),
           ),
         ),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 10),
+        ),
 
         // SearchTextField widget with spacing
         const SliverPadding(
