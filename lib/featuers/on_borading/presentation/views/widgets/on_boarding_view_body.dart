@@ -1,6 +1,8 @@
 import 'package:aspen/core/utils/app_images.dart';
 import 'package:aspen/core/utils/app_styles.dart';
+import 'package:aspen/featuers/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' as g;
 
 class OnBoardingViewBody extends StatelessWidget {
   const OnBoardingViewBody({super.key});
@@ -61,7 +63,11 @@ class OnBoardingViewBody extends StatelessWidget {
                       backgroundColor: const Color(0xff1674F3),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14))),
-                  onPressed: () {},
+                  onPressed: () {
+                    g.Get.off(() => const HomeView(),
+                        transition: g.Transition.leftToRightWithFade,
+                        duration: const Duration(milliseconds: 1400));
+                  },
                   child: Text(
                     'Explore ',
                     style: TextStyles.font20SemiBold(context)

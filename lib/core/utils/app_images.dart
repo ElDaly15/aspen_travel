@@ -34,6 +34,10 @@ class Assets {
   /// assets/images/popular_two.png
   static const String imagesPopularTwo = "assets/images/popular_two.png";
 
+  /// Assets for imagesSearch
+  /// assets/images/Search.svg
+  static const String imagesSearch = "assets/images/Search.svg";
+
   /// Assets for imagesSplashBackground
   /// assets/images/splash_background.png
   static const String imagesSplashBackground =
