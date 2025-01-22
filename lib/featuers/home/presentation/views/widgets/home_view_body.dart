@@ -14,13 +14,9 @@ class HomeViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         // SafeArea and SizedBox to add padding at the top
-        const SliverToBoxAdapter(
-          child: SafeArea(
-              child: SizedBox(
-            height: 10,
-          )),
+        SliverToBoxAdapter(
+          child: SizedBox(height: MediaQuery.of(context).padding.top + 5),
         ),
-
         // CustomAppBar wrapped in SliverToBoxAdapter
         const SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 22),
@@ -75,6 +71,9 @@ class HomeViewBody extends StatelessWidget {
 
         const SliverToBoxAdapter(
           child: ListViewOfRecommendedPlaces(),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 100),
         ),
       ],
     );
