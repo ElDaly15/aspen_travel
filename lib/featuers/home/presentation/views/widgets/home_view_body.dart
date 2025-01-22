@@ -10,41 +10,85 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        SafeArea(
-            child: SizedBox(
-          height: 10,
-        )),
-        Padding(
+    return CustomScrollView(
+      slivers: [
+        // SafeArea and SizedBox to add padding at the top
+        const SliverToBoxAdapter(
+          child: SafeArea(
+              child: SizedBox(
+            height: 10,
+          )),
+        ),
+
+        // CustomAppBar wrapped in SliverToBoxAdapter
+        const SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 22),
-          child: CustomAppBar(),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 22),
-          child: SearchTextField(),
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        ListViewOfCategoryItems(),
-        SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 22),
-          child: CustomHeaderOfSections(
-            textTitle: 'Popular',
+          sliver: SliverToBoxAdapter(
+            child: CustomAppBar(),
           ),
         ),
-        SizedBox(
-          height: 10,
+
+        // SearchTextField widget with spacing
+        const SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 22),
+          sliver: SliverToBoxAdapter(
+            child: SearchTextField(),
+          ),
         ),
-        ListViewOfPopularPlaces(),
+
+        // Category List
+        SliverPadding(
+          padding: const EdgeInsets.only(top: 30),
+          sliver: SliverList(
+            delegate: SliverChildListDelegate([
+              const ListViewOfCategoryItems(),
+            ]),
+          ),
+        ),
+
+        // Custom Header "Popular" with spacing
+        const SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 22),
+          sliver: SliverToBoxAdapter(
+            child: CustomHeaderOfSections(textTitle: 'Popular'),
+          ),
+        ),
+
+        // List of Popular Places
+        SliverPadding(
+          padding: const EdgeInsets.only(top: 10),
+          sliver: SliverList(
+            delegate: SliverChildListDelegate([
+              const ListViewOfPopularPlaces(),
+            ]),
+          ),
+        ),
+
+        // Custom Header "Recommended" with spacing
+        const SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 22),
+          sliver: SliverToBoxAdapter(
+            child: CustomHeaderOfSections(textTitle: 'Recommended'),
+          ),
+        ),
+
+        // Recommended Container
+        const SliverPadding(
+          padding: EdgeInsets.only(top: 10),
+          sliver: SliverToBoxAdapter(
+            child: ContainerOfRecommended(),
+          ),
+        ),
       ],
     );
+  }
+}
+
+class ContainerOfRecommended extends StatelessWidget {
+  const ContainerOfRecommended({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
