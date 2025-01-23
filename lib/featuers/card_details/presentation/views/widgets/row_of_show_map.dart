@@ -13,7 +13,7 @@ class RowOfShowMap extends StatelessWidget {
           children: [
             Text(
               'Coeurdes Alpes',
-              style: TextStyles.font24SemiBold(context).copyWith(fontSize: 28),
+              style: TextStyles.font24SemiBold(context).copyWith(fontSize: 25),
             ),
             Row(
               children: [

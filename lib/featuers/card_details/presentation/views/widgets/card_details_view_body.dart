@@ -1,4 +1,7 @@
 import 'package:aspen/core/utils/app_styles.dart';
+import 'package:aspen/featuers/card_details/presentation/views/widgets/custom_btm.dart';
+import 'package:aspen/featuers/card_details/presentation/views/widgets/price_column.dart';
+import 'package:aspen/featuers/card_details/presentation/views/widgets/row_of_facilites.dart';
 import 'package:aspen/featuers/card_details/presentation/views/widgets/row_of_show_map.dart';
 import 'package:aspen/featuers/card_details/presentation/views/widgets/stack_of_image_and_container.dart';
 import 'package:flutter/material.dart';
@@ -13,72 +16,121 @@ class CardDetailsViewBody extends StatefulWidget {
 class _CardDetailsViewBodyState extends State<CardDetailsViewBody> {
   int? maxLines = 5;
   bool switchBetweenSeeMore = false;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 22),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SafeArea(
-            child: SizedBox(
-              height: 10,
+    return CustomScrollView(
+      slivers: [
+        const SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 22),
+          sliver: SliverToBoxAdapter(
+            child: SafeArea(
+              child: SizedBox(height: 10),
             ),
           ),
-          const ImageStackAndContainer(),
-          const SizedBox(
-            height: 20,
+        ),
+        const SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 22),
+          sliver: SliverToBoxAdapter(
+            child: ImageStackAndContainer(),
           ),
-          const RowOfShowMap(),
-          const SizedBox(
-            height: 14,
+        ),
+        const SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 22, vertical: 20),
+          sliver: SliverToBoxAdapter(
+            child: RowOfShowMap(),
           ),
-          Text(
-            'Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping andAspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping anpen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping andAspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping a',
-            style: TextStyles.font18Medium(context).copyWith(
-              color: const Color(0xff606060),
-            ),
-            maxLines: maxLines,
-            overflow: switchBetweenSeeMore
-                ? TextOverflow.visible
-                : TextOverflow.ellipsis,
-          ),
-          TextButton(
-            onPressed: () {
-              setState(() {
-                switchBetweenSeeMore = !switchBetweenSeeMore;
-                maxLines = switchBetweenSeeMore ? null : 5;
-              });
-            },
-            style: ButtonStyle(
-              padding: WidgetStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 0),
-              ),
-            ),
-            child: SizedBox(
-              width: 120,
-              child: Row(
-                children: [
-                  Text(
-                    'Read More',
-                    style: TextStyles.font18Bold(context).copyWith(
-                      color: const Color(0xff176FF2),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 22),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping',
+                  style: TextStyles.font18Medium(context).copyWith(
+                    color: const Color(0xff606060),
+                  ),
+                  maxLines: maxLines,
+                  overflow: switchBetweenSeeMore
+                      ? TextOverflow.visible
+                      : TextOverflow.ellipsis,
+                ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      switchBetweenSeeMore = !switchBetweenSeeMore;
+                      maxLines = switchBetweenSeeMore ? null : 5;
+                    });
+                  },
+                  style: ButtonStyle(
+                    alignment: Alignment.centerLeft,
+                    padding: WidgetStateProperty.all(
+                      const EdgeInsets.symmetric(vertical: 0),
                     ),
                   ),
-                  const SizedBox(
-                    width: 5,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Read More',
+                        style: TextStyles.font18Bold(context).copyWith(
+                          color: const Color(0xff176FF2),
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      const Icon(
+                        Icons.keyboard_arrow_down_outlined,
+                        color: Color(0xff176FF2),
+                        size: 25,
+                      ),
+                    ],
                   ),
-                  const Icon(
-                    Icons.keyboard_arrow_down_outlined,
-                    color: Color(0xff176FF2),
-                    size: 25,
+                ),
+              ],
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 20),
+          sliver: SliverToBoxAdapter(
+            child: Text(
+              'Facilities',
+              style: TextStyles.font24SemiBold(context),
+            ),
+          ),
+        ),
+        const SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 22),
+          sliver: SliverToBoxAdapter(
+            child: RowOfFacilites(),
+          ),
+        ),
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 30),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                children: [
+                  const PriceColumn(),
+                  const Spacer(),
+                  SizedBox(
+                    width: 200,
+                    child: CustomButtomWithIcon(
+                      onPressed: () {},
+                      icon: Icons.arrow_forward,
+                      title: 'Book Now',
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
