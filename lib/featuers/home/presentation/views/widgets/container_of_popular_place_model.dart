@@ -23,7 +23,7 @@ class _ContainerOfPopularSectionState extends State<ContainerOfPopularSection> {
       onTap: () {
         g.Get.to(() => const CardDetailsView(),
             transition: g.Transition.leftToRightWithFade,
-            duration: const Duration(milliseconds: 1400));
+            duration: const Duration(milliseconds: 50));
       },
       child: Stack(
         children: [
