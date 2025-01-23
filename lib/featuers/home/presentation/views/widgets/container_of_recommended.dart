@@ -14,7 +14,7 @@ class ContainerOfRecommended extends StatelessWidget {
       onTap: () {
         g.Get.to(() => const CardDetailsView(),
             transition: g.Transition.leftToRightWithFade,
-            duration: const Duration(milliseconds: 50));
+            duration: const Duration(milliseconds: 500));
       },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 12),
